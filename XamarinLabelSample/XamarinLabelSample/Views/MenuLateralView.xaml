@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:custom="clr-namespace:XamarinLabelSample;assembly=XamarinLabelSample"
+             xmlns:view="clr-namespace:XamarinLabelSample"     
+             mc:Ignorable="d"
+             x:Class="XamarinLabelSample.MenuLateralView"
+             NavigationPage.HasNavigationBar="False"     
+             Title="Menu">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="130"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+            <FlexLayout
+                    Grid.Row="0"
+                    Direction="Row"
+                    AlignItems="Center"
+                    Padding="{OnPlatform Android='20,0',iOS='20'}"
+                >
+                <StackLayout>
+                    <Image Source="logoalgorix.png"></Image>
+                </StackLayout>
+                <StackLayout
+                        Spacing="0"
+                        Padding="20,0,0,0"
+                       >
+                </StackLayout>
+            </FlexLayout>
+            <ListView RowHeight="55"
+                          ItemsSource="{Binding MenuList}"
+                          Grid.Row="1"
+                          BackgroundColor="#00143D"
+                          SeparatorVisibility="Default"
+                          ItemSelected="OnMenuItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Padding="20,10,0,10"
+                                             Spacing="20"
+                                             >
+                                <Image Source="{Binding Icon}"
+                                           WidthRequest="36"
+                                           HeightRequest="36"
+                                           VerticalOptions="StartAndExpand"/>
+                                <custom:LabelFix Text="{Binding Title}"
+                                           FontSize="Body"
+                                           FontFamily="Arial"
+                                           VerticalOptions="Center"
+                                           TextColor="White"
+                                           FontAttributes="Bold"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage BackgroundColor="Fuschia">
+            <x:Arguments>
+                <ContentPage Title="Cartao Exemplo">
+                    <StackLayout>
+                        <custom:LabelFix Text="Olá pagina de teste"
+                                         HorizontalOptions="CenterAndExpand"
+                                         VerticalOptions="CenterAndExpand"
+                                         FontAttributes="Bold"
+                                         FontSize="Body"/>
+                    </StackLayout>
+                </ContentPage>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

@@ -28,15 +28,17 @@ namespace XamarinLabelSample.Droid
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
-            if (Control != null)
-            {
-                GradientDrawable gd = new GradientDrawable();
-                gd.SetColor(global::Android.Graphics.Color.Rgb(237, 237, 237));
-                gd.SetCornerRadius(15);
-                Control.SetBackgroundDrawable(gd);
-                Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
-                Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.Blue));
-            }
+            //if (Control != null)
+            //{
+            //    GradientDrawable gd = new GradientDrawable();
+            //    gd.SetColor(global::Android.Graphics.Color.Rgb(0, 255, 237));
+            //    gd.SetCornerRadius(15);
+            //    Control.SetBackgroundDrawable(gd);
+            //    Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
+            //    Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.Red));
+            //}
+            if (e.NewElement == null) return;
+            Control.SetTextSize(Android.Util.ComplexUnitType.Dip, (float)e.NewElement.FontSize);
         }
     }
 }

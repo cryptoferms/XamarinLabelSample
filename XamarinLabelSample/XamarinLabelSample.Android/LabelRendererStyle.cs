@@ -22,7 +22,7 @@ namespace XamarinLabelSample.Droid
 {
     [Obsolete]
     public class LabelRendererStyle : LabelRenderer
-    { 
+    {
         protected void setFontSizeAgain()
         {
             var nativeControl = (TextView)Control;
@@ -33,6 +33,8 @@ namespace XamarinLabelSample.Droid
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Label> e)
         {
             base.OnElementChanged(e);
+            if (e.NewElement == null) return;
+            Control.SetTextSize(Android.Util.ComplexUnitType.Dip, (float)e.NewElement.FontSize);
             setFontSizeAgain();
         }
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)

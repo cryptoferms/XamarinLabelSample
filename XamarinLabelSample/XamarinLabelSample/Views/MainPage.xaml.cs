@@ -17,5 +17,15 @@ namespace XamarinLabelSample
         {
             InitializeComponent();
         }
+
+        private void ButtonStyle_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MenuLateralView());
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
+        }
     }
 }

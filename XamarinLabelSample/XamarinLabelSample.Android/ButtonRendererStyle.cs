@@ -32,12 +32,13 @@ namespace XamarinLabelSample.Droid
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Button> e)
         {
             base.OnElementChanged(e);
+            if (e.NewElement == null) return;
+            Control.SetTextSize(Android.Util.ComplexUnitType.Dip, (float)e.NewElement.FontSize);
             SetFontSizeAgain();
         }
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-
             if (e.PropertyName == Xamarin.Forms.Button.FontProperty.PropertyName)
                 SetFontSizeAgain();
         }
